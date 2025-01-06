@@ -3,14 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate a Yellow Flower</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Sunflower Drawing Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    svg {
+      width: 400px;
+      height: 500px;
+      stroke-linecap: round;
+      stroke-width: 3;
+    }
+
+    .draw {
+      fill: none;
+      stroke: black;
+      stroke-dasharray: 700;
+      stroke-dashoffset: 700;
+      animation: draw 3s linear forwards;
+    }
+
+    .fill {
+      fill-opacity: 0;
+      animation: fill 2s ease-in forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes fill {
+      to {
+        fill-opacity: 1;
+      }
+    }
+
+    @keyframes sway {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(3deg);
+      }
+    }
+
+    #sunflower {
+      animation: sway 5s ease-in-out infinite;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <button id="generate-flower">Generate Flower</button>
-    <div id="flower-area"></div>
-  </div>
-  <script src="script.js"></script>
+  <button id="start-drawing" aria-label="Click to generate sunflower">Generate Sunflower</button>
+  <svg id="sunflower" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" class="hidden">
+    <!-- Petals -->
+    <g id="petals">
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(0, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(30, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(60, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(90, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(120, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(150, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(180, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(210, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(240, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(270, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(300, 150, 170)" />
+      <path class="draw" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(330, 150, 170)" />
+    </g>
+
+    <!-- Center -->
+    <circle class="draw" cx="150" cy="170" r="60" />
+
+    <!-- Fill colors -->
+    <g id="petal-fills">
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(0, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(30, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(60, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(90, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(120, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(150, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(180, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(210, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(240, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(270, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(300, 150, 170)" fill="yellow" />
+      <path class="fill" d="M150 110 C110 30, 190 30, 150 110" transform="rotate(330, 150, 170)" fill="yellow" />
+    </g>
+
+    <circle class="fill" cx="150" cy="170" r="60" fill="brown" />
+
+    <!-- Stem -->
+    <path class="draw" d="M150 230 L150 400" />
+    <path class="fill" d="M150 230 L150 400" stroke="green" fill="green" />
+
+    <!-- Leaves -->
+    <path class="draw" d="M150 280 C110 260, 90 300, 120 330 C150 360, 180 310, 150 280" />
+    <path class="fill" d="M150 280 C110 260, 90 300, 120 330 C150 360, 180 310, 150 280" fill="green" />
+  </svg>
+
+  <script>
+    document.getElementById('start-drawing').addEventListener('click', function () {
+      const sunflower = document.getElementById('sunflower');
+      sunflower.classList.remove('hidden');
+      this.style.display = 'none'; // Hide the button after drawing starts
+    });
+  </script>
 </body>
 </html>
